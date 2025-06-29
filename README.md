@@ -108,9 +108,12 @@ This is mostly automatic, you will be asked if you wish to install minimal or a 
 
 ![](./documentation/images/install-storybook-02.png)
 
-#### TODO:
+# Vite Test
 
-│ Adding "@vitest/coverage-v8" to enable coverage reporting. │
-│ Read more about Vitest coverage providers at https://vitest.dev/guide/coverage.html#coverage-providers
+This is partially installed as part of the Storybook Install
 
-#### TODO:
+```
+npm install --save-dev vitest
+```
+
+runn the command will install playwrite, and test coverage node modules
