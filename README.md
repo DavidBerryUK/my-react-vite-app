@@ -52,7 +52,7 @@ This plugin helps identify and prevent misuse of React DOM methods and patterns,
 npm install --save-dev eslint-plugin-react-dom
 ```
 
-### to catch incorrect use of hooks
+### To catch incorrect use of hooks
 
 This plugin enforces the Rules of Hooks in React. It helps ensure correct usage of useEffect, useState, useCallback, etc.
 
@@ -60,14 +60,57 @@ This plugin enforces the Rules of Hooks in React. It helps ensure correct usage 
 npm install --save-dev eslint-plugin-react-hooks
 ```
 
-.eslintrc:
+Update the esLint configuration
+eslint.config.js:
 
 ```
-{
-  "plugins": ["react-hooks"],
-  "rules": {
-    "react-hooks/rules-of-hooks": "error",      // Checks rules of Hooks
-    "react-hooks/exhaustive-deps": "warn"       // Checks effect dependencies
-  }
-}
+import js from "@eslint/js";
+import globals from "globals";
+import reactHooks from "eslint-plugin-react-hooks";
+import reactRefresh from "eslint-plugin-react-refresh";
+import tseslint from "typescript-eslint";
+import react from "eslint-plugin-react";
+import { globalIgnores } from "eslint/config";
+
+export default tseslint.config([
+  globalIgnores(["dist"]),
+  {
+    files: ["**/*.{ts,tsx}"],
+    extends: [
+      js.configs.recommended,
+      tseslint.configs.recommended,
+      react.configs.recommended,
+      reactHooks.configs["recommended-latest"],
+      reactRefresh.configs.vite,
+    ],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+  },
+]);
+
 ```
+
+# Storybook
+
+```
+https://storybook.js.org/docs/builders/vite
+```
+
+```
+npm create storybook@latest
+```
+
+![](./documentation/images/install-storybook-01.png)
+
+This is mostly automatic, you will be asked if you wish to install minimal or a fuller install.
+
+![](./documentation/images/install-storybook-02.png)
+
+#### TODO:
+
+│ Adding "@vitest/coverage-v8" to enable coverage reporting. │
+│ Read more about Vitest coverage providers at https://vitest.dev/guide/coverage.html#coverage-providers
+
+#### TODO:
